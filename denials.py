@@ -111,7 +111,7 @@ if args.dmesg is None or args.dmesg != "dmesg.txt":
     if not os.path.isfile(logname):
         print("Dmesg file is missing! Exiting.")
         sys.exit()
-    os.system('cat %s | grep "avc: denied" > denials.txt' % logname)
+    os.system('cat %s | grep "avc:  denied" > denials.txt' % logname)
 
 if args.logcat is None or logname is None:
     print("Parsing denials from logcat!")
@@ -122,12 +122,12 @@ if args.logcat is None or logname is None:
     if not os.path.isfile(logname):
         print("Logcat file is missing! Exiting.")
         sys.exit()
-    os.system('cat %s | grep "avc: denied" > denials.txt' % logname)
+    os.system('cat %s | grep "avc:  denied" > denials.txt' % logname)
 
 if args.sanitize:
     print("Sanitizing file encoding!")
     os.system('dos2unix %s' % logname)
-    os.system('cat %s | grep "avc: denied" > denials.txt' % logname)
+    os.system('cat %s | grep "avc:  denied" > denials.txt' % logname)
 
 if not os.path.isfile(inputfile):
     print("Denials file is missing! Exiting.")
